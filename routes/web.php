@@ -2,42 +2,52 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return redirect('/home');
+        // Redirect logged-in users to their appropriate dashboard based on their role
+        if (Auth::user()->role === 'admin') {
+            return redirect('admin/dashboard');
+        }
+        return redirect('auth/dashboard');
     }
     return redirect('/auth/login');
 });
 
-// Login Interaction
-Route::prefix('auth')
-    ->name('auth.')
-    ->group(function () {
-        Route::get('/login', function () {
-            if (Auth::check()) {
-                return redirect('/home');
-            }
-            return view('auth.login'); // Your login view
-        })->name('login');
-    });
+Route::middleware(['user_with_expiration'])->group(function () {
+    // User Login Interaction
+    Route::prefix('auth')
+        ->name('auth.')
+        ->group(function () {
+            Route::get('/login', function () {
+                return view('auth.login'); // Your login view
+            })->name('login');
+            Route::get('/dashboard', function () {
+                return (new UserDashboardController())->index();
+            })->name('dashboard');
+        });
+});
 
 Route::get('/admin', function () {
     if (Auth::check()) {
-        return redirect('/admin/dashboard');
+        // Redirect logged-in admin users to the admin dashboard
+        if (Auth::user()->role === 'admin') {
+            return redirect('/admin/dashboard');
+        }
+        return redirect('/auth/dashboard'); // Redirect non-admin users to user dashboard
     }
     return redirect('/admin/login');
 });
 
-Route::middleware(['auth_with_expiration'])->group(function () {
-    //Admin Login Interaction
+Route::middleware(['admin_with_expiration'])->group(function () {
+    // Admin Login Interaction
     Route::prefix('admin')
         ->name('admin.')
         ->group(function () {
-            // Protected Dashboard route - only accessible if the user is authenticated
             Route::get('/login', function () {
-                return view('admin.auth.login'); // Your login view
+                return view('admin.auth.login'); // Admin login view
             })->name('login');
             Route::get('/dashboard', function () {
                 return (new DashboardController())->index();

@@ -2,8 +2,10 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
+use App\Http\Middleware\AuthWithExpiration as UserWithExpiration;
 use App\Http\Middleware\Admin\AuthWithExpiration;
 use App\Http\Middleware\Admin\RememberTokenExpiration;
+use App\Http\Middleware\RememberTokenExpiration as UserRememberTokenExpiration;
 use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -14,7 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->group('auth_with_expiration', [
+        $middleware->group('user_with_expiration', [
+            UserWithExpiration::class,
+            UserRememberTokenExpiration::class,
+        ]);
+        $middleware->group('admin_with_expiration', [
             AuthWithExpiration::class,
             RememberTokenExpiration::class,
         ]);

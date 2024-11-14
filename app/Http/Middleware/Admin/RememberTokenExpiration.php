@@ -25,7 +25,7 @@ class RememberTokenExpiration
             if (Carbon::now()->greaterThan($expiration)) {
                 Auth::logout();
                 session()->forget('remember_expiration'); // Clear expired session
-                return redirect('/login')->withErrors([
+                return redirect('admin/login')->withErrors([
                     'session_expired' => 'Your session has expired. Please log in again.',
                 ]);
             }

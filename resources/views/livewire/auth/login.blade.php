@@ -6,7 +6,9 @@
                     <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header">
-                                <img src="{{ asset('images/logo_ccp.png') }}" alt="logo">
+                                <center>
+                                    <img src="{{ asset('assets/images/logo_ccp.png') }}" alt="logo" width="200">
+                                </center>
                                 <h3 class="text-center font-weight-light my-4">Parking Right</h3>
                             </div>
                             <div class="card-body">
@@ -33,18 +35,11 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="mb-3 text-center">
-                                        <a class="small" style="text-decoration: none;" href="password.html">Forgot
-                                            Password?</a>
-                                    </div>
                                     <div class="d-grid gap-2">
                                         <button class="btn btn-primary" type="submit">Login</button>
                                     </div>
                                 </form>
                             </div>
-                            {{-- <div class="card-footer text-center py-3">
-                                <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
