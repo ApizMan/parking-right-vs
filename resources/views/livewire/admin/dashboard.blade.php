@@ -39,13 +39,17 @@
                     <td>{{ $data->email }}</td>
                     <td>
                         <div class="d-flex mx-3" style="gap: 10px;">
+                            <button type="button" class="btn btn-warning"
+                                wire:click="resetPassword('{{ $data->email }}')">
+                                <i class="fa-solid fa-envelope"></i> Reset Password
+                            </button>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#editUser-{{$data->id}}" wire:click="edit({{ $data->id }})">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
                             </button>
                             <button wire:click="delete({{ $data->id }})" class="btn btn-danger" role="button"
                                 onclick="return confirmDelete();">
-                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-trash"></i> Remove
                             </button>
 
                             <script>

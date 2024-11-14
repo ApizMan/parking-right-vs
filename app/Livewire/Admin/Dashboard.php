@@ -3,8 +3,11 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Illuminate\Support\Str; // Add this line
 
 class Dashboard extends Component
 {
@@ -91,6 +94,36 @@ class Dashboard extends Component
 
         // Flash success message
         session()->flash('status', 'User delete successfully!');
+
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function resetPassword($userEmail)
+    {
+        // Ensure the email is valid
+        $user = User::where('email', $userEmail)->first();
+
+        if (!$user) {
+            // Optionally handle user not found
+            session()->flash('error', 'User not found!');
+            return;
+        }
+
+        // Generate a random password
+        $randomPassword = Str::random(10); // Adjust the length as needed
+
+        // Update user password
+        $user->update([
+            'password' => Hash::make($randomPassword),
+        ]);
+
+        // Send the new password via email
+        Mail::send('admin.auth.password-reset', ['password' => $randomPassword, 'email' => $userEmail], function ($message) use ($userEmail) {
+            $message->to($userEmail)->subject('Your New Password');
+        });
+
+        // Flash success message
+        session()->flash('status', 'Password successfully sent to user email!');
 
         return redirect()->route('admin.dashboard');
     }
