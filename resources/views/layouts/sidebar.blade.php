@@ -6,7 +6,7 @@
                 @if (Auth::user()->role == 'admin')
                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
                     href="{{route('admin.dashboard')}}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                     Manage User
                 </a>
                 @else
