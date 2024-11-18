@@ -29,7 +29,11 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="{{route('admin.logout')}}">Logout</a></li>
+                <li>
+                    <a class="dropdown-item" href="{{ Auth::user()->role == 'admin' ?
+                        route('admin.logout_admin') :
+                        route('auth.logout_user')}}">Logout</a>
+                </li>
             </ul>
         </li>
     </ul>

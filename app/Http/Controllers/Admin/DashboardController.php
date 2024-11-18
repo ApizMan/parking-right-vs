@@ -11,7 +11,11 @@ class DashboardController extends Controller
 {
     function index()
     {
-        return view('admin.dashboard');
+        if (Auth::user()->role == 'admin') {
+            return view('admin.dashboard');
+        }
+
+        return redirect()->route('auth.login');
     }
 
     public function logout()

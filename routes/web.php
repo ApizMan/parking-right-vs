@@ -27,6 +27,7 @@ Route::middleware(['user_with_expiration'])->group(function () {
             Route::get('/dashboard', function () {
                 return (new UserDashboardController())->index();
             })->name('dashboard');
+            Route::get('/logout-user', [UserDashboardController::class, 'logout'])->name('logout_user');
         });
 });
 
@@ -52,7 +53,7 @@ Route::middleware(['admin_with_expiration'])->group(function () {
             Route::get('/dashboard', function () {
                 return (new DashboardController())->index();
             })->name('dashboard');
-            Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
+            Route::get('/logout-admin', [DashboardController::class, 'logout'])->name('logout_admin');
             // Other protected routes
         });
 });
