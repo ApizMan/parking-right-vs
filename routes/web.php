@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManageAccessController;
 use App\Http\Controllers\DashboardController as UserDashboardController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -29,6 +31,14 @@ Route::middleware(['user_with_expiration'])->group(function () {
             })->name('dashboard');
             Route::get('/logout-user', [UserDashboardController::class, 'logout'])->name('logout_user');
         });
+
+    // Settings
+    Route::prefix('setting')
+        ->name('setting.')
+        ->group(function () {
+            Route::get('/', [SettingController::class, 'index'])->name(name: 'setting');
+            Route::put('/change-password', [SettingController::class, 'changePassword'])->name('change_password');
+        });
 });
 
 Route::get('/admin', function () {
@@ -53,6 +63,7 @@ Route::middleware(['admin_with_expiration'])->group(function () {
             Route::get('/dashboard', function () {
                 return (new DashboardController())->index();
             })->name('dashboard');
+            Route::get('/manage-access', [ManageAccessController::class, 'index'])->name('manage_access');
             Route::get('/logout-admin', [DashboardController::class, 'logout'])->name('logout_admin');
             // Other protected routes
         });

@@ -9,6 +9,11 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                     Manage User
                 </a>
+                <a class="nav-link {{ request()->routeIs('admin.manage_access') ? 'active' : '' }}"
+                    href="{{route('admin.manage_access')}}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-lock"></i></div>
+                    Manage Access
+                </a>
                 @else
                 <a class="nav-link {{ request()->routeIs('auth.dashboard') ? 'active' : '' }}"
                     href="{{route('auth.dashboard')}}">
