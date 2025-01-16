@@ -63,7 +63,6 @@ Route::middleware(['admin_with_expiration'])->group(function () {
             Route::get('/dashboard', function () {
                 return (new DashboardController())->index();
             })->name('dashboard');
-            Route::get('/manage-access', [ManageAccessController::class, 'index'])->name('manage_access');
             Route::get('/logout-admin', [DashboardController::class, 'logout'])->name('logout_admin');
             // Other protected routes
         });

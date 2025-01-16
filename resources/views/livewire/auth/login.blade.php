@@ -9,7 +9,7 @@
                                 <center>
                                     <img src="{{ asset('assets/images/logo_ccp.png') }}" alt="logo" width="200">
                                 </center>
-                                <h3 class="text-center font-weight-light my-4"><b>Parking Right</b></h3>
+                                {{-- <h3 class="text-center font-weight-light my-4"><b>Parking Right</b></h3> --}}
                             </div>
                             <div class="card-body">
                                 @if (session()->has('error'))

@@ -18,10 +18,24 @@ class Dashboard extends Component
 
     public $userId;
 
+    protected $listeners = ['deleteUser', 'editUser']; // Ensure this is declared at the top
+
     public function mount()
     {
         // Exclude users with the 'admin' role
         $this->datas = User::where('role', '!=', 'admin')->get();
+    }
+
+    public function deleteUser($id)
+    {
+        // dd($id);
+        $this->delete($id);
+    }
+
+    public function editUser($id)
+    {
+        // dd($id);
+        $this->edit($id);
     }
 
     public function save()
