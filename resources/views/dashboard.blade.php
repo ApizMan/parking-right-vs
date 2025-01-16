@@ -36,6 +36,11 @@
             }
         }, 5000); // 10000 milliseconds = 5 seconds
     </script>
+
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles-tables.css')}}">
     @livewireStyles
 </head>
 
@@ -63,6 +68,12 @@
                 @include('layouts.footer')
         </div>
     </div>
+    {{-- <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script> --}}
+    <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/pdfmake.min.js')}}"></script>
+    <script src="{{asset('js/vfs_fonts.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/scripts.js') }}"></script>
@@ -73,6 +84,8 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+
+
     @livewireScripts
 </body>
 
