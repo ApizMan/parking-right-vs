@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManageAccessController;
 use App\Http\Controllers\DashboardController as UserDashboardController;
+use App\Http\Controllers\ParkingRightController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,9 @@ Route::middleware(['user_with_expiration'])->group(function () {
             Route::get('/dashboard', function () {
                 return (new UserDashboardController())->index();
             })->name('dashboard');
+            Route::get('/parking-rights', function () {
+                return (new ParkingRightController())->index();
+            })->name('parking_right');
             Route::get('/logout-user', [UserDashboardController::class, 'logout'])->name('logout_user');
         });
 

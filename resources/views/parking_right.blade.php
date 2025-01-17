@@ -64,7 +64,7 @@
                 </ul>
             </div>
             @endif
-            <livewire:dashboard />
+            <livewire:parking-right />
             @include('layouts.footer')
         </div>
     </div>

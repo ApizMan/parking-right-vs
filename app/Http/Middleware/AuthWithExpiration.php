@@ -19,7 +19,7 @@ class AuthWithExpiration
         // Check if the user is not authenticated and is trying to access the dashboard
         if (Auth::check() && $request->is('auth/login')) {
             // Redirect logged-in users away from the login page to the dashboard
-            return redirect()->route('auth.dashboard');
+            return redirect()->route('auth.parking_right');
         }
 
         // Check if the user is authenticated but is trying to access the dashboard

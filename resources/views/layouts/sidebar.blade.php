@@ -15,6 +15,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
+                <a class="nav-link {{ request()->routeIs('auth.parking_right') ? 'active' : '' }}"
+                    href="{{route('auth.parking_right')}}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-square-parking"></i></div>
+                    Parking Right
+                </a>
                 @endif
 
             </div>
