@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\ParkingRight as ModelsParkingRight;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -31,9 +32,17 @@ class ParkingRight extends Component
 
     public function getApiData($endpoint)
     {
-        $url = env('BASE_URL') . $endpoint;
-        $data = file_get_contents($url);
-        return json_decode($data, true);
+        $baseUrl = rtrim(env('BASE_URL'), '/');
+        $url = $baseUrl . $endpoint;
+
+        Log::info("Fetching data from URL: $url"); // Log the URL for debugging
+
+        try {
+            $data = file_get_contents($url);
+            return json_decode($data, true);
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
     public function migrateData()

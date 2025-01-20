@@ -94,13 +94,21 @@ class ParkingRightController extends Controller
             'paid_amount' => 'required',
             'creation_date' => 'required|date_format:d-m-Y',
             'creation_time' => 'required|date_format:h:i:s A',
-            'zone' => 'required|string|max:255',
+            'zone' => 'required|numeric|max:255',
             'terminal' => 'required|string|max:255',
             'transaction_no' => 'required|string|max:255',
         ]);
 
         // Generate a UUID for parking_id
         $parkingId = (string) Str::uuid();
+
+        if ($validate['zone'] == 1) {
+            $zone = 'Pahang - PBT Kuantan';
+        } else if ($validate['zone'] == 2) {
+            $zone = 'Terengganu - PBT Kuala Terengganu';
+        } else if ($validate['zone'] == 3) {
+            $zone = 'Kelantan - PBT Machang';
+        }
 
         $parking = ParkingRight::create([
             'parking_id' => $parkingId,
@@ -112,7 +120,7 @@ class ParkingRightController extends Controller
             'paid_amount' => $validate['paid_amount'],
             'creation_date' => $validate['creation_date'],
             'creation_time' => $validate['creation_time'],
-            'zone' => $validate['zone'],
+            'zone' => $zone,
             'terminal' => $validate['terminal'],
             'transaction_no' => $validate['transaction_no'],
         ]);
