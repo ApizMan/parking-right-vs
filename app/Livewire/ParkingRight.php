@@ -5,9 +5,10 @@ namespace App\Livewire;
 use App\Models\ParkingRight as ModelsParkingRight;
 use Carbon\Carbon;
 use DateTime;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithPagination;
+
+include_once app_path('constants.php');
 
 class ParkingRight extends Component
 {
@@ -32,10 +33,10 @@ class ParkingRight extends Component
 
     public function getApiData($endpoint)
     {
-        $baseUrl = rtrim(env('BASE_URL'), '/');
+        $baseUrl = rtrim(BASE_URL, '/');
         $url = $baseUrl . $endpoint;
 
-        Log::info("Fetching data from URL: $url"); // Log the URL for debugging
+        // dd($url);
 
         try {
             $data = file_get_contents($url);

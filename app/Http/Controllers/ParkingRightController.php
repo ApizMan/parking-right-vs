@@ -15,6 +15,6 @@ class ParkingRightController extends Controller
             return view('parking_right');
         }
 
-        return redirect()->route('admin.login');
+        return redirect()->route('auth.login');
     }
 }
