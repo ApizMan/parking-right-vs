@@ -108,6 +108,8 @@ class ParkingRightController extends Controller
             $zone = 'Terengganu - PBT Kuala Terengganu';
         } else if ($validate['zone'] == 3) {
             $zone = 'Kelantan - PBT Machang';
+        } else {
+            $zone = 'Unknown';
         }
 
         $parking = ParkingRight::create([
