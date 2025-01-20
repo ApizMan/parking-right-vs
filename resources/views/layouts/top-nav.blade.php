@@ -4,8 +4,9 @@
     $logo = CCP_LOGO_WHITE;
     @endphp
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-5" href="{{ route('admin.dashboard') }}"><img src="{{ $logo }}" alt="logo" width="100"
-            height="50"></a>
+    <a class="navbar-brand ps-5" href="{{ Auth::user()->role == 'admin' ?
+                        route('admin.dashboard') :
+                        route('auth.dashboard')}}"><img src="{{ $logo }}" alt="logo" width="100" height="50"></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
