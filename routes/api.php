@@ -10,6 +10,7 @@ Route::prefix('parking-right')
     ->group(function () {
         Route::controller(ParkingRightController::class)->group(function () {
             Route::get('/list',  'index');
+            Route::post('/store',  'store');
             Route::get('/generate-token', 'generateToken');
         });
     });
