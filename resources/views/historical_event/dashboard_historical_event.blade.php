@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard</title>
+    <title>Dashboard - Historical Event</title>
     @php
     include_once app_path('constants.php');
     $favicon = FAVICON;
@@ -64,7 +64,7 @@
                 </ul>
             </div>
             @endif
-            <livewire:dashboard />
+            <livewire:historical-event.dashboard />
             @include('layouts.footer')
         </div>
     </div>
