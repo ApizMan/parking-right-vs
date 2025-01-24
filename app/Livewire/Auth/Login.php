@@ -35,7 +35,7 @@ class Login extends Component
                 }
 
                 // Redirect to dashboard or intended page
-                return redirect()->route('auth.parking_right');
+                return redirect()->route('auth.dashboard');
             }
 
             // Logout and flash error message if not an admin
