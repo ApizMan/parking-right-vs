@@ -3,28 +3,31 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
     </ol>
-    <div class="row">
+    <div class="row g-4 pb-4">
         <div class="col-xl-4 col-md-6">
-            <div class="card text-white mb-4" style="background-color: rgb(24, 147, 248)">
-                <div class="card-body">
-                    <h4>Total Parking</h4>
-                    <h1 class="px-3 pb-3 pt-3" style="float: right">{{ $parkingCount }}</h1>
+            <div class="card text-white border-0 shadow-sm"
+                style="background: linear-gradient(135deg, #4e54c8, #8f94fb); border-radius: 15px;">
+                <div class="card-body d-flex flex-column justify-content-between align-items-start">
+                    <h5 class="fw-bold mb-3" style="color: whitesmoke">Total Parking</h5>
+                    <h1 class="ms-auto fw-bold" style="color: whitesmoke">{{ $parkingCount }}</h1>
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-md-4">
-            <div class="card text-white mb-4" style="background-color: rgb(115, 188, 249)">
-                <div class="card-body">
-                    <h4>Total Parking Today</h4>
-                    <h1 class="px-3 pb-3 pt-3" style="float: right">{{ $parkingCountToday }}</h1>
+        <div class="col-xl-4 col-md-6">
+            <div class="card text-white border-0 shadow-sm"
+                style="background: linear-gradient(135deg, #43cea2, #185a9d); border-radius: 15px;">
+                <div class="card-body d-flex flex-column justify-content-between align-items-start">
+                    <h5 class="fw-bold mb-3" style="color: whitesmoke">Total Parking Today</h5>
+                    <h1 class="ms-auto fw-bold" style="color: whitesmoke">{{ $parkingCountToday }}</h1>
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-md-4">
-            <div class="card text-white mb-4" style="background-color: rgb(117, 249, 115)">
-                <div class="card-body">
-                    <h4>Total Using App</h4>
-                    <h1 class="px-3 pb-3 pt-3" style="float: right">{{ $appCount }}</h1>
+        <div class="col-xl-4 col-md-6">
+            <div class="card text-white border-0 shadow-sm"
+                style="background: linear-gradient(135deg, #fffd75, #adff7e); border-radius: 15px;">
+                <div class="card-body d-flex flex-column justify-content-between align-items-start">
+                    <h5 class="fw-bold mb-3">Total Using App</h5>
+                    <h1 class="ms-auto fw-bold">{{ $appCount }}</h1>
                 </div>
             </div>
         </div>
